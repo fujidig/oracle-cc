@@ -371,7 +371,30 @@
 		したがって，前段落の事柄から，$\mathcal{J} \cap \delta$は$P$の前稠密集合である．
 		したがって任意の$p \in \mathcal{J} \setminus \delta$はある$q \in \mathcal{J} \cap \delta$と両立可能である．
 		$\mathcal{J} \setminus \delta \ne \emptyset$が$\abs{\mathcal{J}} = \aleph_1$により分かる．これは$\mathcal{J}$が反鎖なことに矛盾．
-\end{proof}
+		
+		(3) まず，$\abs{P} = \abs{Q} = \aleph_1$の場合を示す．
+		一般性を失うことなく，$Q$の台集合は$\omega_1$としてよい．
+		$\delta \in \Lim_{\omega_1}$を$Q$が$\bar{M}$連鎖条件を満たすことの証拠を与える$D_{\bar{M}}$のメンバーの元であるとする．
+		集合$A$が$P \restrict \delta$で前稠密かつ$A \in M_\delta$だと仮定する．このとき$A$が$P$で前稠密であることを示さなくてはならない．
+		$P \lessdot Q$なので，特に$P \subsetic Q$である．よって$A$が$Q$で前稠密であることを示せば十分である．
+		$\delta$のとり方より$A$が$Q \restrict \delta$で前稠密なことを示せばよい．
+		
+		$q \in Q$に対して，集合$I_q$を
+		\[
+		I_q = \{ r \in P : \text{$r$は$q$と両立不能 または } (\forall r^\dagger \le r)(r^\dagger \in P \rightarrow \text{$r^\dagger$は$q$と両立可能} )\}
+		\]
+		とおく．$I_q$は$P$の稠密集合である．よって$P$の極大反鎖$J_q \subset I_q$をとれる．
+		$P \lessdot Q$より$J_q$は$Q$の中でも極大反鎖である．
+		$r_q \in J_q$であって，$(\forall r^\dagger \le r_q)(r^\dagger \in P \rightarrow \text{$r^\dagger$は$q$と両立可能})$なものをとる．これは取れる．なぜなら取れないとしたらすべての$r \in J_q$が$q$と両立不能なことになって，$J_q$が$Q$で極大反鎖なことに反するからである．
+		今考えている$\delta$の動く範囲をあるclub集合との共通部分の中で考えることにより，$\delta$は次を満たすと仮定できる：任意の$q < \delta$に対して$r_q < \delta$，かつ$p_1, p_2 \in P \restrict \delta$が$P$で両立するなら$P \restrict \delta$でも両立する，かつ$Q$に対しても同じことが成り立つ．
+		
+		$A$が$Q \restrict \delta$で前稠密なことを示す．
+		そのために，$q \in Q \restrict \delta$を取る．
+		$r_q \in P \restrict \delta$であって$A$が$P \restrict \delta$で前稠密なので，$p \in A$があって，$p$と$r_q$は両立する．$r^\dagger \in P \restrict \delta$を$p$と$r_q$の共通拡大とする．
+		$r_q$のとり方より，$r^\dagger$と$q$は両立する．
+		よって$p$と$q$は両立する．したがって，$A$は$Q \restrict \delta$で前稠密であることが示された．
+		これで，$\abs{P} = \abs{Q} = \aleph_1$の場合が証明された．
+	\end{proof}
 	
 	
 	\nocite{*}
