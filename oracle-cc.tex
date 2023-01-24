@@ -1,0 +1,380 @@
+\documentclass[uplatex]{jsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{framed}
+\usepackage{braket}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{accents}
+\usepackage{tocloft}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{color}
+\usepackage{xifthen}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{mathtools}
+\usepackage[explicit]{titlesec}
+\usepackage{mdframed}
+\usepackage{geometry}
+\geometry{left=30mm,right=30mm,top=20mm,bottom=20mm}
+\usepackage{enumerate}
+\usepackage[dvipdfmx]{hyperref}
+\renewcommand{\baselinestretch}{1.2}
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{cd}
+
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+\newcommand{\scrN}{\mathcal{N}}
+\newcommand{\scrI}{\mathcal{I}}
+\newcommand{\scrC}{\mathcal{C}}
+\newcommand{\scrJ}{\mathcal{J}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\range}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\append}{{}^\frown}
+\newcommand{\boldsig}{\boldsymbol{\Sigma}}
+\newcommand{\boldpi}{\boldsymbol{\Pi}}
+\newcommand{\bolddelta}{\boldsymbol{\Delta}}
+\newcommand{\Ordinals}{\mathrm{On}}
+\newcommand\forces{\Vdash}
+\newcommand\notforces{\nVdash}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\intr}{\operatorname{int}}
+\newcommand{\ro}{\operatorname{ro}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\frakt}{\mathfrak{t}}
+\newcommand{\s}{\mathfrak{s}}
+\newcommand{\frakb}{\mathfrak{b}}
+\newcommand{\frakd}{\mathfrak{d}}
+\newcommand{\frakc}{\mathfrak{c}}
+\newcommand{\Pow}{\mathcal{P}}
+\newcommand{\HDZ}{\mathrm{HDZ}}
+\newcommand{\dimh}{\dim_{\mathrm{H}}}
+\newcommand{\Haus}{\mathcal{H}}
+\newcommand{\non}{\operatorname{non}}
+\newcommand{\cov}{\operatorname{cov}}
+\newcommand{\add}{\operatorname{add}}
+\newcommand{\cof}{\operatorname{cof}}
+\newcommand{\Cof}{\mathbf{Cof}}
+\newcommand{\Cov}{\mathbf{Cov}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\Lc}{\mathbf{Lc}}
+\newcommand{\nul}{\mathsf{null}}
+\newcommand{\meager}{\mathsf{meager}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\height}{\mathrm{ht}}
+\newcommand{\pow}{\mathrm{pow}}
+\newcommand{\GTle}{\preceq_\mathrm{GT}}
+\newcommand{\Map}[2]{\operatorname{Map}(#1, #2)}
+\newcommand{\omegaupomega}{\omega^{\uparrow \omega}}
+\newcommand{\twototheltomega}{2^{<\omega}}
+\newcommand{\PackingSmall}[1]{S_\mathrm{packing}^{#1}}
+\newcommand{\TreeSmall}[1]{S_\mathrm{tree}^{#1}}
+\newcommand{\SlalomSmall}[1]{S_\mathrm{slalom}^{#1}}
+\newcommand{\NullAdditive}{\text{null-additive}}
+\newcommand{\Slow}{\mathrm{Slow}}
+\newcommand{\Incr}{\mathrm{Incr}}
+\newcommand{\Div}{\mathrm{Div}}
+\newcommand{\Slalom}{\operatorname{Slalom}}
+\newcommand{\KT}{\operatorname{KT}}
+\newcommand{\cf}{\operatorname{cf}}
+\newcommand{\LangL}{\mathcal{L}}
+\newcommand{\Add}{\operatorname{Add}}
+\newcommand{\Seq}{\operatorname{Seq}}
+\newcommand{\stem}{\operatorname{stem}}
+\newcommand{\suc}{\operatorname{succ}}
+\newcommand{\Lev}{\operatorname{Lev}}
+\newcommand{\PTfg}{\mathbf{PT}_{f,g}}
+\newcommand{\MS}{\mathbf{ManySucc}}
+\newcommand{\AND}{\mathbin{\&}}
+\newcommand{\OR}{\text{ or }}
+\newcommand{\restrict}{\upharpoonright}
+\newcommand{\Lim}{\mathrm{Lim}}
+\newcommand{\Limone}{\mathrm{Lim}_{\omega_1}}
+\newcommand{\ZFC}{\mathsf{ZFC}}
+\newcommand{\subsetic}{\subseteq_{\mathrm{ic}}}
+\DeclareMathOperator*{\diagintr}{\triangle}
+
+\newcommand{\seq}[1]{{\langle#1\rangle}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+
+\renewcommand\emptyset{\varnothing}
+\renewcommand\subset{\subseteq}
+\renewcommand{\setminus}{\smallsetminus}
+
+\newcommand{\needtocheck}[1][]{%
+	\ifthenelse{\equal{#1}{}}{%
+		\textcolor{blue}{[NeedToCheck]}%
+	}{%
+		\textcolor{blue}{[NeedToCheck: #1]}%
+	}%
+}
+
+\newcommand{\todo}[1][]{%
+	\ifthenelse{\equal{#1}{}}{%
+		\textcolor{red}{[TODO]}%
+	}{%
+		\textcolor{red}{[TODO: #1]}%
+	}%
+}
+
+
+\theoremstyle{definition}
+\newtheorem{thm}{定理}[section]
+\newtheorem*{thm*}{定理}
+\newtheorem{defi}[thm]{定義}
+\newtheorem*{defi*}{定義}
+\newtheorem{lem}[thm]{補題}
+\newtheorem*{lem*}{補題}
+\newtheorem{fact}[thm]{事実}
+\newtheorem*{fact*}{事実}
+\newtheorem{prop}[thm]{命題}
+\newtheorem*{prop*}{命題}
+\newtheorem{exm}[thm]{例}
+\newtheorem*{exm*}{例}
+\newtheorem{rmk}[thm]{注意}
+\newtheorem*{rmk*}{注意}
+\newtheorem{cor}[thm]{系}
+\newtheorem*{cor*}{系}
+\newtheorem*{notation*}{記法}
+\newtheorem{asm}[thm]{仮定}
+\newtheorem{prob}[thm]{問題}
+\newtheorem{conj}[thm]{予想}
+\renewcommand{\proofname}{証明}
+
+\newenvironment{claim}[1]{\par\noindent\underline{主張 #1:}\space}{}
+\newenvironment{claimproof}[1]{\par\noindent$\because$) \space#1}{\hfill //}
+
+
+
+\usepackage[backend=biber,style=alphabetic,sorting=nty,doi=false,isbn=false,url=false,eprint=true]{biblatex}
+\addbibresource{oracle-cc.bib}
+\renewbibmacro{in:}{}
+
+\title{信託連鎖条件強制法}
+\author{でぃぐ}
+
+\begin{document}
+	\maketitle
+	
+	%\begin{abstract}
+	%	hogehoge
+	%end{abstract}
+	
+	%\tableofcontents
+	
+	\begin{defi}
+		$\bar{M}$が\textbf{$\aleph_1$-信託}であるとは次を満たすことである:
+		\begin{enumerate}
+			\item $\bar{M}$は列$\bar{M} = \seq{M_\delta : \delta \in \Limone }$である．
+			\item 各$M_\delta$は$\ZFC^-$の可算推移的モデルである．
+			\item 各$\delta \in \Limone$について$\delta + 1 \subset M_\delta$かつ$M_\delta \models ``\delta\text{は可算}"$.
+			\item 任意の$A \subset \omega_1$について$\{\delta \in \Limone : A \cap \delta \in M_\delta \}$は$\omega_1$の定常集合．
+		\end{enumerate}
+	\end{defi}
+	
+	\begin{lem}\label{lem:diamondimpliesoracles}
+		ダイヤモンド原理$\diamondsuit$から$\aleph_1$-信託の存在が導かれる．
+	\end{lem}
+	\begin{proof}
+		ダイヤモンド列$\seq{A_\alpha : \alpha < \omega_1}$をとる．
+		各$\delta \in \Limone$について全単射$f_\delta \colon \omega \to \delta$をとる．
+		$H_{\omega_1}$の，集合$(\delta + 1) \cup \{f_\delta\} \cup \{A_\delta\}$を含む可算初等部分モデル$N_\delta$を取り$N_\delta$の推移崩壊$M_\delta$とする．
+		このとき$\seq{M_\delta : \delta \in \Limone }$が$\aleph_1$-信託である．
+	\end{proof}
+
+	補題\ref{lem:diamondimpliesoracles}の逆も正しいが，本稿では使わない．\cite{kunen1983set}のTheorem 7.14を参照せよ．
+
+	\begin{defi}
+		各$\aleph_1$-信託 $\bar{M}$に対して，$\omega_1$上のフィルター$D_{\bar{M}}$を集合たち
+		\[
+		I_{\bar{M}}(A) = \{ \delta \in \Limone : A \cap \delta \in M_\delta \} \text{ (for $A \subset \omega_1)$}
+		\]
+		で生成されるものとする．
+	\end{defi}
+
+	\begin{lem}
+		\begin{enumerate}
+			\item 任意の$A, B \subset \omega_1$について，$C \subset \omega_1$が存在して
+			\[
+			I_{\bar{M}}(C) = I_{\bar{M}}(A) \cap I_{\bar{M}}(B).
+			\]
+			\item $D_{\bar{M}}$は任意のclub集合であって$\Limone$に含まれるものを持つ．
+			\item $D_{\bar{M}}$は真の正規フィルター．
+		\end{enumerate}
+	\end{lem}
+	\begin{proof}
+		(1) $A, B \subset \omega_1$を取る．$g, f \colon \omega_1 \to \omega_1$を
+		\begin{align*}
+		g(\alpha) &= 2 \alpha \\
+		f(\alpha) &= 2 \alpha + 1
+		\end{align*}
+		で定める．
+		$\delta < \omega_1$が極限順序数ならば$\delta$は$g$と$f$で閉じている．そこで絶対性により$g \restrict \delta, f \restrict \delta \in M_\delta$である．
+		
+		$C = g(A) \cup f(B)$とおく．
+		すると
+		\[
+		\delta \in I_{\bar{M}}(C) \iff \delta \in I_{\bar{M}}(A) \AND \delta \in I_{\bar{M}}(B)
+		\]
+		を得る．
+		
+		(2) $C \subset \Lim_{\omega_1}$をclub集合とする．
+		$\seq{\delta_i : i < \omega_1}$を単調増加で連続な$C$の枚挙とする．
+		$A \subset \omega_1$であって次を満たすものを構成する：$\delta \in \Limone$かつすべての$i < \omega_1$に対して$\delta \ne \delta_i$ならば，$A \cap \delta \not \in M_\delta$.
+		この$A$を構成し終えると
+		\begin{align*}
+			I_{\bar{M}}(A) &= \{ \delta \in \Limone : A \cap \delta \in M_\delta \} \\
+			& \subset \{ \delta \in \Limone : \delta = \delta_i \text{for some $i<\omega_1$}  \} \\
+			& = C
+		\end{align*}
+		となるので$C \in D_{\bar{M}}$を得ることになる．
+		
+		$A$を区間ごとに帰納的に構成する．
+		つまり$A \cap [\delta_i, \delta_i + \omega)$を$i < \omega_1$に関する帰納法で定めていく．
+		これらの区間の外の順序数については必ず$A$に入れることにする．
+		
+		$A \cap \delta_i$が定まったとき，$2^{\aleph_0}$個の$A \cap (\delta_i + \omega)$の可能性がある．
+		その中から一つ選び，可算集合
+		\[
+		\{ B \cap (\delta_i + \omega) : B \in M_\delta, \delta_i < \delta < \delta_{i+1} \}
+		\]
+		に属さないものとする．
+		この構成で欲しい$A$が得られる．構成より$\delta \ne \delta_i$ for all $i < \omega_1$なる$\delta \in \Limone$に対して$A \cap \delta \not \in M_\delta$であるからだ．
+		
+		(3) 真のフィルターであることは(1)と各$A \subset \omega_1$について$I_{\bar{M}}(A)$が定常集合である，特に非空であることという事実から従う．
+		
+		正規性を示そう．
+		対角共通部分で閉じていることを示す．
+		それを示す際，とってくる元たちはフィルターの生成元であるとしてよいので，$I_{\bar{M}}(A_i)$ (各$i < \omega_1$について$A_i \subset \omega_1$)が与えられることとなる．$A \subset \omega_1$であって
+		\[
+		I_{\bar{M}}(A) \subset \diagintr_{i < \omega_1} I_{\bar{M}}(A_i)
+		\]
+		となるものを構成すればよい．つまり
+		\[
+		(\forall \delta \in \Limone)[A \cap \delta \in M_\delta \rightarrow (\forall i < \delta)(A_i \cap \delta \in M_\delta)]
+		\]
+		を言う．(2)と(3)よりclub manyな$\delta$についてこの式が言えれば良い．
+		
+		$\langle -, -\rangle : \omega_1 \times \omega_1 \to \omega_1$を十分良く定義されたペア関数とする．
+		\[
+		C = \{ \delta < \omega_1 : \text{$\delta$は$\langle -, -\rangle$で閉じている}\}
+		\]
+		とおけば$C$はclubである．
+		$\delta \in C$について$\langle -, -\rangle$の$\delta \times \delta$への制限は絶対性より$M_\delta$に属する．
+		\[
+		A = \{ \langle i, \alpha\rangle : \alpha \in A_i \AND i < \omega_1 \}
+		\]
+		とおく．
+		$\delta \in C$かつ$A \cap \delta \in M_\delta$を仮定し，$i < \delta$とする．
+		このとき，$\langle -, -\rangle$で第一座標が$i$なものを取り出す関数は絶対的なことから$A_i \cap \delta \in M_\delta$を得る．これで示せた．
+	\end{proof}
+
+	\begin{lem}\label{lem:closure}
+		$h \colon \Pow(\omega_1) \to \Pow(\omega_1)$を関数とする．このとき$\{ \delta \in \Limone : (\forall A \in M_\delta \cap \Pow(\delta))(h(A) \cap \delta \in M_\delta) \}$は$D_{\bar{M}}$の元である．
+	\end{lem}
+	\begin{proof}
+			集合$\bigcup_{\delta \in \Limone} M_\delta \cap \Pow(\delta)$を$\bigcup_{\delta \in \Limone} M_\delta \cap \Pow(\delta) = \{ X_\alpha : \alpha \in \omega_1 \}$と枚挙する．
+			ただしあるclub $C$について，どの$\delta \in C$に対しても$M_\delta \cap \Pow(\delta)$の元はすべて$\delta$未満の番号$\alpha$に対する$X_\alpha$として出現するようにする．このような枚挙は適当なペア関数を使ってbookkeepingをすれば可能である．
+			$\alpha < \omega_1$に対して$Y_\alpha = I_{\bar{M}}(h(X_\alpha))$とおく．
+			このとき
+			\begin{align*}
+				D_{\bar{M}} \ni C \cap \diagintr_{\alpha < \omega_1} Y_\alpha &= \{ \delta \in C : (\forall \alpha < \delta)(\delta \in Y_\alpha) \} \\
+			 	&= \{ \delta \in C : (\forall \alpha < \delta)(\delta \in I_{\bar{M}}(h(X_\alpha))) \} \\
+			 	&\supseteq \{ \delta \in C : (\forall A \in M_\delta \cap \Pow(\delta))(\delta \in I_{\bar{M}}(h(A)) \} \\
+			 	&= \{ \delta \in C : (\forall A \in M_\delta \cap \Pow(\delta))(h(A) \cap \delta \in M_\delta) \}
+			\end{align*}
+			となる．これでよい．
+		\end{proof}
+
+	\begin{defi}\label{def:oraclecc}
+		$\bar{M}$を$\aleph_1$-信託とする．強制概念$P$が\textbf{$\bar{M}$連鎖条件}を満たすとは，次の\.い\.ず\.れ\.かを満たすときである．
+		\begin{enumerate}
+			\item $\abs{P} \le \aleph_0$である．
+			\item $\abs{P} = \aleph_1$かつある単射$f \colon P \to \omega_1$について
+			\begin{align*}
+			\{ \delta \in \Limone : &\text{集合}A\text{が}A \in M_\delta, A \subset \delta, \text{$f^{-1}(A)$が前稠密 in $f^{-1}\{i : i < \delta\}$を満たすならば} \\
+			&\text{$f^{-1}(A)$は前稠密 in $P$} \} \in D_{\bar{M}}
+			\end{align*}
+			\item $\abs{P} > \aleph_1$かつすべての$P^\dagger \subset P$で$\abs{P^\dagger} \le \aleph_1$なものについて，$P''$であって，$\abs{P''} \le \aleph_1$かつ$P^\dagger \subset P'' \subset P$であって，$P''$は(2)の意味で$\bar{M}$-c.c.を満たし，$P'' \subsetic P$である．
+		\end{enumerate}
+	\end{defi}
+
+	\begin{lem}
+		定義\ref{def:oraclecc}の(2)における「ある単射$f \colon P \to \omega_1$について」は「すべての単射$f \colon P \to \omega_1$について」と変更しても同値である．
+	\end{lem}
+	\begin{proof}
+		(2)の証拠となる単射$f \colon P \to \omega_1$を取る．
+		単射$g \colon P \to \omega_1$を任意に取る．
+		仮定より
+		\begin{align*}
+		A := \{ \delta \in \Limone : &\text{集合}A\text{が}A \in M_\delta, A \subset \delta, \text{$f^{-1}(A)$が前稠密 in $f^{-1}\{i : i < \delta\}$を満たすならば} \\
+		&\text{$f^{-1}(A)$は前稠密 in $P$} \}
+		\end{align*}
+		は$D_{\bar{M}}$の元である．集合
+		\[
+		B := \{ \delta \in \Limone : f^{-1}(\{i : i < \delta\}) = g^{-1}(\{i : i < \delta\})\}
+		\]
+		はclubなので$B$も$D_{\bar{M}}$の元である．
+		実際，$f \circ g^{-1}$と$g \circ f^{-1}$の両方で閉じている点全体の集合がclubだからである．
+		集合
+		\[
+		C := \{ \delta \in \Limone : (\forall A \in M_\delta \cap \Pow(\delta)) ((f \circ g^{-1}) \restrict A \in M_\delta) \}
+		\]
+		も$D_{\bar{M}}$の元である (by 補題 \ref{lem:closure})．
+		したがって，
+		\begin{align*}
+			\{ \delta \in \Limone : &\text{集合}A\text{が}A \in M_\delta, A \subset \delta, \text{$g^{-1}(A)$が前稠密 in $g^{-1}\{i : i < \delta\}$を満たすならば} \\
+			&\text{$g^{-1}(A)$は前稠密 in $P$} \} \supseteq A \cap B \cap C \in D_{\bar{M}}
+		\end{align*}
+		となり証明が終わる．
+	\end{proof}
+
+	\begin{lem}
+		\begin{enumerate}
+			\item $P_1$と$P_2$が同型な強制概念でかつ，$P_1$が$\bar{M}$連鎖条件を満たすならば，$P_2$も$\bar{M}$連鎖条件を満たす．
+			\item ある$\aleph_1$信託$\bar{M}$について$P$が$\bar{M}$連鎖条件を満たすならば，$P$は可算鎖条件を満たす．
+			\item $P \lessdot Q$かつ$Q$が$\bar{M}$連鎖条件を満たすならば，$P$も$\bar{M}$連鎖条件を満たす．
+			\item 定義\ref{def:oraclecc}の$\abs{P} > \aleph_1$の場合において，$P'' \lessdot P$を要求しても同値な定義となる．
+		\end{enumerate}
+	\end{lem}
+	\begin{proof}
+		(1) 明らか．
+		
+		(2) 濃度$\aleph_1$の場合だけ示せばほかの場合もすぐ従う．そこで$P$は台集合$\omega_1$としてよい．
+		$\mathcal{J}$を濃度$\aleph_1$の極大反鎖とする．
+		このときclub集合$C \subset \omega_1$があって，次を満たす：$\delta \in C$かつ$q < \delta$ならば，$p \in \mathcal{J} \cap \delta$があって$p$と両立可能である，そして，$p, q < \delta$が両立可能ならば，共通下界を$P \restrict \delta$に持つ (そういう元を割り当てる写像をとり，それで閉じている元たちからなるclub集合を取ればよい)．
+		
+		$P$が$\bar{M}$連鎖条件を満たすので，$\delta \in C \cap I_{\bar{M}}(\mathcal{J})$が存在して以下を満たす：
+		$A \in M_\delta$かつ$A$が$P \restrict \delta$の前稠密部分集合ならば，$A$は$P$の前稠密部分集合である．
+		
+		今，$\delta \in I_{\bar{M}}(\mathcal{J})$より$\mathcal{J} \cap \delta \in M_\delta$であり，また$\delta \in C$より$\mathcal{J} \cap \delta$は$P \restrict \delta$の前稠密集合である．
+		したがって，前段落の事柄から，$\mathcal{J} \cap \delta$は$P$の前稠密集合である．
+		したがって任意の$p \in \mathcal{J} \setminus \delta$はある$q \in \mathcal{J} \cap \delta$と両立可能である．
+		$\mathcal{J} \setminus \delta \ne \emptyset$が$\abs{\mathcal{J}} = \aleph_1$により分かる．これは$\mathcal{J}$が反鎖なことに矛盾．
+\end{proof}
+	
+	
+	\nocite{*}
+	\printbibliography[title={参考文献}]
+	
+\end{document}
