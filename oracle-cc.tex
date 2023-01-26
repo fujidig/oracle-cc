@@ -64,9 +64,6 @@
 \newcommand{\frakd}{\mathfrak{d}}
 \newcommand{\frakc}{\mathfrak{c}}
 \newcommand{\Pow}{\mathcal{P}}
-\newcommand{\HDZ}{\mathrm{HDZ}}
-\newcommand{\dimh}{\dim_{\mathrm{H}}}
-\newcommand{\Haus}{\mathcal{H}}
 \newcommand{\non}{\operatorname{non}}
 \newcommand{\cov}{\operatorname{cov}}
 \newcommand{\add}{\operatorname{add}}
@@ -85,15 +82,6 @@
 \newcommand{\Map}[2]{\operatorname{Map}(#1, #2)}
 \newcommand{\omegaupomega}{\omega^{\uparrow \omega}}
 \newcommand{\twototheltomega}{2^{<\omega}}
-\newcommand{\PackingSmall}[1]{S_\mathrm{packing}^{#1}}
-\newcommand{\TreeSmall}[1]{S_\mathrm{tree}^{#1}}
-\newcommand{\SlalomSmall}[1]{S_\mathrm{slalom}^{#1}}
-\newcommand{\NullAdditive}{\text{null-additive}}
-\newcommand{\Slow}{\mathrm{Slow}}
-\newcommand{\Incr}{\mathrm{Incr}}
-\newcommand{\Div}{\mathrm{Div}}
-\newcommand{\Slalom}{\operatorname{Slalom}}
-\newcommand{\KT}{\operatorname{KT}}
 \newcommand{\cf}{\operatorname{cf}}
 \newcommand{\LangL}{\mathcal{L}}
 \newcommand{\Add}{\operatorname{Add}}
@@ -101,14 +89,13 @@
 \newcommand{\stem}{\operatorname{stem}}
 \newcommand{\suc}{\operatorname{succ}}
 \newcommand{\Lev}{\operatorname{Lev}}
-\newcommand{\PTfg}{\mathbf{PT}_{f,g}}
-\newcommand{\MS}{\mathbf{ManySucc}}
 \newcommand{\AND}{\mathbin{\&}}
 \newcommand{\OR}{\text{ or }}
 \newcommand{\restrict}{\upharpoonright}
 \newcommand{\Lim}{\mathrm{Lim}}
 \newcommand{\Limone}{\mathrm{Lim}_{\omega_1}}
 \newcommand{\ZFC}{\mathsf{ZFC}}
+\newcommand{\CH}{\mathsf{CH}}
 \newcommand{\subsetic}{\subseteq_{\mathrm{ic}}}
 \DeclareMathOperator*{\diagintr}{\triangle}
 
@@ -170,7 +157,7 @@
 \addbibresource{oracle-cc.bib}
 \renewbibmacro{in:}{}
 
-\title{信託連鎖条件強制法}
+\title{神託連鎖条件強制法}
 \author{でぃぐ}
 
 \begin{document}
@@ -183,7 +170,7 @@
 	%\tableofcontents
 	
 	\begin{defi}
-		$\bar{M}$が\textbf{$\aleph_1$-信託}であるとは次を満たすことである:
+		$\bar{M}$が\textbf{$\aleph_1$-神託}であるとは次を満たすことである:
 		\begin{enumerate}
 			\item $\bar{M}$は列$\bar{M} = \seq{M_\delta : \delta \in \Limone }$である．
 			\item 各$M_\delta$は$\ZFC^-$の可算推移的モデルである．
@@ -193,19 +180,19 @@
 	\end{defi}
 	
 	\begin{lem}\label{lem:diamondimpliesoracles}
-		ダイヤモンド原理$\diamondsuit$から$\aleph_1$-信託の存在が導かれる．
+		ダイヤモンド原理$\diamondsuit$から$\aleph_1$-神託の存在が導かれる．
 	\end{lem}
 	\begin{proof}
 		ダイヤモンド列$\seq{A_\alpha : \alpha < \omega_1}$をとる．
 		各$\delta \in \Limone$について全単射$f_\delta \colon \omega \to \delta$をとる．
 		$H_{\omega_1}$の，集合$(\delta + 1) \cup \{f_\delta\} \cup \{A_\delta\}$を含む可算初等部分モデル$N_\delta$を取り$N_\delta$の推移崩壊$M_\delta$とする．
-		このとき$\seq{M_\delta : \delta \in \Limone }$が$\aleph_1$-信託である．
+		このとき$\seq{M_\delta : \delta \in \Limone }$が$\aleph_1$-神託である．
 	\end{proof}
 
 	補題\ref{lem:diamondimpliesoracles}の逆も正しいが，本稿では使わない．\cite{kunen1983set}のTheorem 7.14を参照せよ．
 
 	\begin{defi}
-		各$\aleph_1$-信託 $\bar{M}$に対して，$\omega_1$上のフィルター$D_{\bar{M}}$を集合たち
+		各$\aleph_1$-神託 $\bar{M}$に対して，$\omega_1$上のフィルター$D_{\bar{M}}$を集合たち
 		\[
 		I_{\bar{M}}(A) = \{ \delta \in \Limone : A \cap \delta \in M_\delta \} \text{ (for $A \subset \omega_1)$}
 		\]
@@ -244,7 +231,7 @@
 		この$A$を構成し終えると
 		\begin{align*}
 			I_{\bar{M}}(A) &= \{ \delta \in \Limone : A \cap \delta \in M_\delta \} \\
-			& \subset \{ \delta \in \Limone : \delta = \delta_i \text{for some $i<\omega_1$}  \} \\
+			& \subset \{ \delta \in \Limone : \delta = \delta_i \text{ for some $i<\omega_1$}  \} \\
 			& = C
 		\end{align*}
 		となるので$C \in D_{\bar{M}}$を得ることになる．
@@ -307,7 +294,7 @@
 		\end{proof}
 
 	\begin{defi}\label{def:oraclecc}
-		$\bar{M}$を$\aleph_1$-信託とする．強制概念$P$が\textbf{$\bar{M}$連鎖条件}を満たすとは，次の\.い\.ず\.れ\.かを満たすときである．
+		$\bar{M}$を$\aleph_1$-神託とする．強制概念$P$が\textbf{$\bar{M}$連鎖条件}を満たすとは，次の\.い\.ず\.れ\.かを満たすときである．
 		\begin{enumerate}
 			\item $\abs{P} \le \aleph_0$である．
 			\item $\abs{P} = \aleph_1$かつある単射$f \colon P \to \omega_1$について
@@ -349,10 +336,25 @@
 		となり証明が終わる．
 	\end{proof}
 
+	\begin{lem}[$\CH$]\label{lem:p1p2p3}
+		$P_1 \subset P_2$とし，$\abs{P_1} \le \aleph_1$かつ$P_2$は可算鎖条件を満たすとする．
+		このとき，$P_3$が存在して，$\abs{P_3} \le \aleph_1$かつ$P_1 \subset P_3 \lessdot P_2$を満たす．
+	\end{lem}
+	\begin{proof}
+		$P_2$の部分集合の単調増加連続な列$\seq{P^{(\alpha)} : \alpha < \omega_1}$を次のように定める：
+		まず$P^{(0)} = P_1$として，極限順序数$\alpha$については$P^{(\alpha)} = \bigcup_{\beta < \alpha} P_\beta$とおく．
+		後続順序数$\alpha = \beta + 1$のときの$P^{(\alpha)}$は次のように定める．
+		$P^{(\beta)}$の可算集合$I$であって$P_2$の中で前稠密ではないものの各々について，そのwitness $p_I \in P_2$を取る．$P^{(\alpha)}$は$P^{(\beta)}$に$p_I$たちを追加した集合とする．
+		そして，$P^{(\alpha)}_0$の元のすべての組について，それらが$P_2$で両立するなら，共通拡大をとり，$P^{(\alpha)}_0$に追加して得られる集合を$P^{(\alpha)}$とする．
+		
+		最後に$P_3 = \bigcup_{\alpha < \omega_1} P^{(\alpha)}$とおけばこれが求めるべきものである．
+		なお，$\CH$を仮定しているので，各ステップにおいて$I$の個数は$\aleph_1$であること，そして$P_2$が可算鎖条件を満たすので，保存すべきおのおのの極大反鎖のサイズは可算であることに注意しておく．
+	\end{proof}
+
 	\begin{lem}
 		\begin{enumerate}
 			\item $P_1$と$P_2$が同型な強制概念でかつ，$P_1$が$\bar{M}$連鎖条件を満たすならば，$P_2$も$\bar{M}$連鎖条件を満たす．
-			\item ある$\aleph_1$信託$\bar{M}$について$P$が$\bar{M}$連鎖条件を満たすならば，$P$は可算鎖条件を満たす．
+			\item ある$\aleph_1$神託$\bar{M}$について$P$が$\bar{M}$連鎖条件を満たすならば，$P$は可算鎖条件を満たす．
 			\item $P \lessdot Q$かつ$Q$が$\bar{M}$連鎖条件を満たすならば，$P$も$\bar{M}$連鎖条件を満たす．
 			\item 定義\ref{def:oraclecc}の$\abs{P} > \aleph_1$の場合において，$P'' \lessdot P$を要求しても同値な定義となる．
 		\end{enumerate}
@@ -394,6 +396,26 @@
 		$r_q$のとり方より，$r^\dagger$と$q$は両立する．
 		よって$p$と$q$は両立する．したがって，$A$は$Q \restrict \delta$で前稠密であることが示された．
 		これで，$\abs{P} = \abs{Q} = \aleph_1$の場合が証明された．
+		
+		次に一般の場合を示そう．$P$の濃度で場合分けする．
+		
+		$\abs{P} \le \aleph_0$のとき．このときは明らかに$P$は$\bar{M}$連鎖条件を満たす．
+		
+		次に$\abs{P} = \aleph_1$のとき．$\abs{Q} = \aleph_1$なら証明済みなので$\abs{Q} > \aleph_1$とする．
+		$\abs{Q}$が$\bar{M}$連鎖条件を満たすことより$P^\dagger \subsetic Q$であって$P \subset P^\dagger$かつ$P^\dagger$は$\bar{M}$連鎖条件を満たし，$\abs{P^\dagger} = \aleph_1$なものが存在する．
+		$P \lessdot Q$かつ$P^\dagger \subsetic Q$により，$P \lessdot P^\dagger$が分かる．
+		よって，すでに示したことより$P$は$\bar{M}$連鎖条件を満たす．
+		
+		最後に$\abs{P} > \aleph_1$のとき．
+		$P^\dagger \subset P$であって$\abs{P^\dagger} = \aleph_1$なものを任意にとる．
+		補題 \ref{lem:p1p2p3}より，$P''$を見つけることができて，$\abs{P''} = \aleph_1$かつ$P^\dagger \subset P'' \lessdot P$である．
+		$P \lessdot Q$なので，$P'' \lessdot Q$が従う．
+		よって，小さい方の強制概念の濃度が$\aleph_1$なときの主張が証明済みなことより，$P''$は$\bar{M}$連鎖条件を満たす．ゆえに，$P$は$\bar{M}$連鎖条件を満たす．
+		
+		(4) $P$がもとの意味で$\bar{M}$連鎖条件を満たし，$\abs{P} > \aleph_1$であるとする．
+		$P^\dagger \subset P$で$\abs{P^\dagger} \le \aleph_1$なものを任意に取る．
+		補題\ref{lem:p1p2p3}により，$P''$であって，$\abs{P''} 	\le \aleph_1$かつ$P^\dagger \subset P'' \lessdot P$なものを取れる．
+		(3)より$P''$は$\bar{M}$連鎖条件を満たす．これで主張が示された．
 	\end{proof}
 	
 	
