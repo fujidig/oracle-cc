@@ -24,6 +24,7 @@
 \geometry{left=30mm,right=30mm,top=20mm,bottom=20mm}
 \usepackage{enumerate}
 \usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
 \renewcommand{\baselinestretch}{1.2}
 
 \usetikzlibrary{positioning}
@@ -157,7 +158,8 @@
 \addbibresource{oracle-cc.bib}
 \renewbibmacro{in:}{}
 
-\title{神託連鎖条件強制法}
+
+\title{\vspace{-2cm} \HUGE 神託連鎖条件強制法}
 \author{でぃぐ}
 
 \begin{document}
@@ -167,7 +169,9 @@
 	%	hogehoge
 	%end{abstract}
 	
-	%\tableofcontents
+	\tableofcontents
+	
+	\section{神託連鎖条件強制法}
 	
 	\begin{defi}
 		$\bar{M}$が\textbf{$\aleph_1$-神託}であるとは次を満たすことである:
@@ -417,6 +421,97 @@
 		補題\ref{lem:p1p2p3}により，$P''$であって，$\abs{P''} 	\le \aleph_1$かつ$P^\dagger \subset P'' \lessdot P$なものを取れる．
 		(3)より$P''$は$\bar{M}$連鎖条件を満たす．これで主張が示された．
 	\end{proof}
+
+	\section{タイプの排除定理}
+	
+	\begin{thm}
+		各$i < \omega_1$について$\psi_i(x)$を$\boldpi^1_2$論理式とする．
+		$\bigwedge_{i < \omega_1} \psi_i(x)$は$V$にも$V^\C$にも解がないと仮定する．
+		このとき，$\aleph_1$神託$\bar{M}$が存在して，任意の$\bar{M}$連鎖条件を満たす強制概念$P$について$\bigwedge_{i < \omega_1} \psi_i(x)$は$V^P$にも解がない．
+	\end{thm}
+	\begin{proof}
+		自然数$n$を，強制法の定理たちが$\ZFC$の$\Sigma_n$文から証明でき，定理の仮定が$\Sigma_n$で記述できる程度に十分大きく取る．
+		可算な強制概念$P$と実数の良い$P$名前$\dot{x}$に対して$(M(P, \dot{x}), \in)$を可算な$\Sigma_n$初等的な$V$の部分モデルとする．	
+		\[
+		I(P, \dot{x}) = \{ A \in M(P, \dot{x}) : \text{$A$は$P$の前稠密部分集合}  \}
+		\]
+		とおく．
+		
+		この状況で次の補題をまず示す．
+		
+		\begin{lem}
+			$P \subsetic P^\dagger$かつ任意の$A \in I(P, \dot{x})$は$P^\dagger$で前稠密だとする．
+			このとき
+			\[
+				V^{P^\dagger} \models \neg \bigwedge_{i < \omega_1} \psi_i(\dot{x}[G]).
+			\]
+		\end{lem}
+		\renewcommand\qedsymbol{//}
+		\begin{proof}
+			$M(P, \dot{x})$を簡単のため$M$と書き，その推移崩壊を$N$とし，推移崩壊写像を$\pi \colon M \to N$とする．
+			$G$を$(V, P^\dagger)$ジェネリックフィルターとする．
+			\[
+			\tilde{G} = \{ p \in \pi(P) : \pi^{-1}(p) \in G \}
+			\]
+			とおく．$\tilde{G}$は$(N, \pi(P))$ジェネリックフィルターである．
+			
+			実際，上向き閉はかんたんに示せる．
+			ジェネリック性を示すために，$D \in N, D \subset \pi(P)$稠密集合を任意に取ろう．
+			このとき$\pi^{-1}(D) \in I(M, \dot{x})$である．仮定より，$\pi^{-1}(D)$は$P^\dagger$で前稠密である．よって，$G$が$(V, P^\dagger)$ジェネリックなので$\pi^{-1}(D) \cap G \ne \emptyset$である．元$p \in \pi^{-1}(D) \cap G$を取る．
+			このとき$\pi(p) \in D \subset$かつ$\pi^{-1}(\pi(p)) = p \in G$である．よって，$\pi(p) \in \pi(P) \cap \tilde{G}$.
+			下向きに有向なことも示さないといけない．
+			$p, q \in \tilde{G}$とする．
+			\[ J = \{ r \in P : r \perp \pi^{-1}(p) \text{ or } r \perp \pi^{-1}(q) \text{ or } r \le \pi^{-1}(p), \pi^{-1}(q) \} \]
+			とおく．
+			$J \in M$かつ$J$は$P$の中で前稠密，よって仮定より$P^\dagger$の中でも前稠密である．
+			ただし，$J \in M$であることを確かめるために，$M$と$V$の初等性と$P, \pi^{-1}(p), \pi^{-1}(q) \in M$と$P$が可算なので$P \subset M$であることを使った．
+			したがって，$G$のジェネリック性より$J \cap G \ni r$がとれる．
+			$\pi^{-1}(p), \pi^{-1}(q) \in G$より$r$について$J$の定義の前半の2つを満たすことはないので，$r \le \pi^{-1}(p), \pi^{-1}(q)$である．
+			よって，$\pi(r) \in \tilde{G}$かつ$\pi(r) \le p, q$を得る．
+			
+			$\dot{x}$は実数の良い名前だったので，
+			\[
+			\dot{x} = \bigcup_{m \in \omega} \{\check{m}\} \times A_m
+			\]
+			で各$A_m$は$P$のantichainである．
+			$\dot{x} \in M$より各$A_m \in M$を得る．
+			\[
+				\pi(\dot{x}) = \bigcup_{m \in \omega} \{\check{m}\} \times \pi(A_m)
+			\]
+			である．ここで
+			\[
+			\dot{x}[G] = \pi(\dot{x})[\hat{G}]
+			\]
+			が分かる．実際，
+			\begin{align*}
+			m \in \dot{x}[G] &\iff G \cap A_m \ne \emptyset \\
+			&\iff \tilde{G} \cap \pi(A_m) \ne \emptyset \\
+			&\iff m \in \pi(\dot{x})[\hat{G}]
+			\end{align*}
+			である．2つ目の同値変形については，まず上から下は$p \in G \cap A_m$を取ったとき，$P$の可算性より$p \in A_m \subset P \subset M$なので，$\pi(p) \in \tilde{G}$が分かる．$\pi(p) \in \pi(A_m)$は当たり前．よって，$\pi(p) \in \tilde{G} \cap \pi(A_m)$となる．
+			下から上は順当に示せる．
+			
+			さて，$M$は$V$の$\Sigma_n$初等部分モデルなので，補題の仮定を満たす．
+			つまり\[M \models ``\C \forces (\exists i < \omega_1)\neg \psi_i(\dot{x})"\]である．
+			$M$も$P$を可算だと思っている (つまりCohen強制法だと思っている)こと，そして$M$と$N$の間の同型と強制関係の定義より，
+			\[
+			N[\tilde{G}] \models (\exists i < \omega_1)\neg \psi_i(\pi(\dot{x})[\tilde{G}])
+			\]
+			を得る．よって，$i \in N \cap \omega_1$があって，
+			\[
+			N[\tilde{G}] \models \neg \psi_i(\pi(\dot{x})[\tilde{G}]).
+			\]
+			2つの推移的モデル$N[\tilde{G}] \subset V[G]$に対して$\boldsig^1_2$上向き絶対性を使うと
+			\[
+			V[G] \models \neg \psi_i(\pi(\dot{x})[\tilde{G}]).
+			\]
+			を得る．これが得たかったことである．
+		\end{proof}
+		
+		\renewcommand\qedsymbol{$\square$}
+		
+	\end{proof}
+
 	
 	
 	\nocite{*}
