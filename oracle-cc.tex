@@ -188,8 +188,9 @@
 	\end{lem}
 	\begin{proof}
 		ダイヤモンド列$\seq{A_\alpha : \alpha < \omega_1}$をとる．
-		各$\delta \in \Limone$について全単射$f_\delta \colon \omega \to \delta$をとる．
-		$H_{\omega_1}$の，集合$(\delta + 1) \cup \{f_\delta\} \cup \{A_\delta\}$を含む可算初等部分モデル$N_\delta$を取り$N_\delta$の推移崩壊$M_\delta$とする．
+		%各$\delta \in \Limone$について全単射$f_\delta \colon \omega \to \delta$をとる．
+		%$H_{\omega_1}$の，集合$(\delta + 1) \cup \{f_\delta\} \cup \{A_\delta\}$を含む可算初等部分モデル$N_\delta$を取り$N_\delta$の推移崩壊$M_\delta$とする．
+		$H_{\omega_1}$の集合$(\delta + 1) \cup \{A_\delta\}$を含む可算初等部分モデル$N_\delta$を取り$N_\delta$の推移崩壊$M_\delta$とする．
 		このとき$\seq{M_\delta : \delta \in \Limone }$が$\aleph_1$-神託である．
 	\end{proof}
 
@@ -355,7 +356,7 @@
 		なお，$\CH$を仮定しているので，各ステップにおいて$I$の個数は$\aleph_1$であること，そして$P_2$が可算鎖条件を満たすので，保存すべきおのおのの極大反鎖のサイズは可算であることに注意しておく．
 	\end{proof}
 
-	\begin{lem}
+	\begin{lem}\label{lem:propetiesoforaclecc}
 		\begin{enumerate}
 			\item $P_1$と$P_2$が同型な強制概念でかつ，$P_1$が$\bar{M}$連鎖条件を満たすならば，$P_2$も$\bar{M}$連鎖条件を満たす．
 			\item ある$\aleph_1$神託$\bar{M}$について$P$が$\bar{M}$連鎖条件を満たすならば，$P$は可算鎖条件を満たす．
@@ -424,7 +425,7 @@
 
 	\section{タイプの排除定理}
 	
-	\begin{thm}
+	\begin{thm}[$\diamondsuit_{\aleph_1}$]
 		各$i < \omega_1$について$\psi_i(x)$を$\boldpi^1_2$論理式とする．
 		$\bigwedge_{i < \omega_1} \psi_i(x)$は$V$にも$V^\C$にも解がないと仮定する．
 		このとき，$\aleph_1$神託$\bar{M}$が存在して，任意の$\bar{M}$連鎖条件を満たす強制概念$P$について$\bigwedge_{i < \omega_1} \psi_i(x)$は$V^P$にも解がない．
@@ -439,7 +440,7 @@
 		
 		この状況で次の補題をまず示す．
 		
-		\begin{lem}
+		\begin{lem}\label{lem:typeomitting}
 			$P \subsetic P^\dagger$かつ任意の$A \in I(P, \dot{x})$は$P^\dagger$で前稠密だとする．
 			このとき
 			\[
@@ -510,7 +511,35 @@
 		
 		\renewcommand\qedsymbol{$\square$}
 		
+		さて，定理の証明に戻ろう．
+		
+		$\diamondsuit_{\aleph_1}$と閉包の議論により，次のような$\aleph_1$神託$\bar{M} = \seq{M_\delta : \delta \in \Limone}$を得ることができる：$P$が強制概念である$\delta < \omega_1$を台集合にするもので，$P, \dot{x} \in M_\delta$ならば$I(P, \dot{x}) \subset M_\delta$ ($P$と$I(P, \dot{x})$は可算である)．
+		この$\bar{M}$が定理の結論を満たすことを示そう．
+		
+		背理法で，$P^\dagger$が$\bar{M}$連鎖条件を満たし，$\dot{x}$が実数の$P^\dagger$名前で，$V^{P^\dagger} \models \bigwedge_i \psi_i(x)$であると仮定しよう．
+		今，$\abs{P^\dagger} = \aleph_1$だと仮定してよい．
+		なぜなら，$\abs{P^\dagger} \le \aleph_0$は定理の仮定よりありえない．
+		$\abs{P^\dagger} \ge \aleph_2$のとき，補題\ref{lem:propetiesoforaclecc}より，$P''$が取れて，$\dot{x}$は$P''$名前，$\abs{P''} = \aleph_1$かつ$P'' \lessdot P^\dagger$かつ$P''$は$\bar{M}$連鎖条件を満たすものが取れる．
+		$P'' \lessdot P^\dagger$なので，絶対性により$V^{P''} \models \neg\psi_i(\dot{x})$は$V^{P^\dagger} \models \neg\psi_i(\dot{x})$を導く．よって，$V^{P''} \models  \bigwedge_i \psi_i(\dot{x})$となる．したがって，背理法の仮定を満たす$P^\dagger$をサイズ$\aleph_1$で取り直すことができた．
+		
+		一般性を失うことなく，$P^\dagger$の台集合は$\omega_1$であるとしてよい．
+		$\delta < \omega_1$であって，$P := P^\dagger \restrict \delta$が次の条件たちを満たすものを見つけられる．
+		
+		\begin{enumerate}
+			\item $\dot{x}$は$P$名前．
+			\item $P, \dot{x} \in M_\delta$．
+			\item $P \subsetic P^\dagger$．
+			\item $A \in M_\delta$かつ$A$が$P$で前稠密ならば$A$は$P^\dagger$でも前稠密．
+		\end{enumerate}
+		
+		実際，$P^\dagger$が可算鎖条件を満たすことから，(1)を満たす$\delta$はcobounded manyにあり，(2)を満たす$\delta$は$D_{\bar{M}}$の定義より$D_{\bar{M}}$-manyにあり，(3)を満たす$\delta$はclub manyにある (両立元に関する閉包の議論)．そして(4)を満たす$\delta$も神託連鎖条件の定義より，$D_{\bar{M}}$-manyにある．したがって，以上全部を満たす$\delta$がある．
+		
+		これらの事実と$\bar{M}$の構成と補題\ref{lem:typeomitting}より，$V^{P^\dagger} \models \neg \bigwedge_i \psi_i(\dot{x})$を得る．これは矛盾．
 	\end{proof}
+
+	\begin{rmk}
+		補題\ref{lem:typeomitting}の証明で推移崩壊を取る必要は本当はないし，もとの本 (\cite{shelah2017proper})でも取っていない．筆者が非推移的モデルのジェネリック拡大の議論になれていないため，この形にした．
+	\end{rmk}
 
 	
 	
